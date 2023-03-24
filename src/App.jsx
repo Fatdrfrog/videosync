@@ -14,6 +14,7 @@ function App() {
     handleFastForward,
     handleSliderChange,
     duration,
+    playbackRate,
   } = useYoutubeVideo();
 
   return (
@@ -34,7 +35,7 @@ function App() {
         />
       </div>
       <div className="grid grid-cols-2 gap-4">
-        {videos.map((vid) => (
+        {videos.map((vid, idx) => (
           <ReactPlayer
             className="grid text-cyan-500 shadow-cyan-500/50 hover:shadow-indigo-500/40 place-self-center"
             key={vid.id}
@@ -42,6 +43,7 @@ function App() {
             playing={vid.isPlaying}
             controls={false}
             pip={false}
+            playbackRate={idx === 1 ? playbackRate : 1}
             muted={true}
             config={{
               file: {
